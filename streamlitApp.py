@@ -59,3 +59,71 @@ st.write(num, string, df)
 
 # ****************************************************************************
 
+table = {
+            'id' : [1,2,3,4],
+            'name' : ['kishor','Arun','Prabav','Arul'],
+            'age' : [25,27,23,29]                
+        }
+
+st.subheader('Dataframe:')
+
+dataframe = pd.DataFrame(table)
+st.dataframe(dataframe)
+
+ordf = pd.read_csv('data/OnlineRetail.csv')
+st.dataframe(ordf, width=1000, height=300)
+
+st.subheader('Table:')
+
+st.table(table)
+
+st.subheader('Metrics:')
+
+col1, col2, col3 = st.columns(3)
+col1.metric("Temperature", "70 °F", "1.2 °F")
+col2.metric("Wind", "9 mph", "-8%")
+col3.metric("Humidity", "86%", "4%")
+
+json_text = {"menu": {
+              "id": "file",
+              "value": "File",
+              "popup": {
+                "menuitem": [
+                  {"value": "New", "onclick": "CreateNewDoc()"},
+                  {"value": "Open", "onclick": "OpenDoc()"},
+                  {"value": "Close", "onclick": "CloseDoc()"}
+                ]
+              }
+            }}
+
+st.subheader('JSON format:')
+
+st.json(json_text)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
