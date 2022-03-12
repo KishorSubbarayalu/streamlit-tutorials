@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 
 selectbox = st.sidebar.radio(
     "Which element you want to see?",
-    ("Text elements", "Data elements", "Chart elements","Input elements")
+    ("Text elements", "Data elements", "Chart elements","Input elements",
+     "Register Now!")
 )
 
 # ****************************************************************************
@@ -178,6 +179,35 @@ if selectbox == "Input elements":
     
     st.number_input("numbers",min_value = 18,max_value=60,value = 30,step = 2)
 
+# ****************************************************************************
+
+if selectbox == "Register Now!" :
+    
+    st.title("Registration Form")
+    
+    first, last = st.columns(2)
+    
+    first.text_input("First Name")
+    last.text_input("Last Name")
+    
+    email, mob = st.columns([3,1])
+    
+    email.text_input("Email ID")
+    mob.text_input("Mobile")
+    
+    un,pw,cpw = st.columns(3)
+    
+    un.text_input("Username")
+    pw.text_input("Password", type="password")
+    cpw.text_input("Confirm Password", type="password")
+    
+    ch,bl,sub = st.columns(3)
+    
+    ch.checkbox("Agree to terms and conditions")
+    
+    if sub.button("Submit"):
+        st.write("Your details has been saved!!")
+        
 # ****************************************************************************
 
 
