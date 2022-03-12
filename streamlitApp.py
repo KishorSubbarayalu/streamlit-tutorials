@@ -2,6 +2,8 @@
 # Load packages
 import streamlit as st
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 # ****************************************************************************
 
@@ -100,29 +102,32 @@ st.subheader('JSON format:')
 
 st.json(json_text)
 
+# ****************************************************************************
+
+st.line_chart(ordf['UnitPrice'])
+
+bar_data = ordf[ordf['InvoiceNo'] == 536365].loc[:,['StockCode','Quantity']]
+
+fig, ax = plt.subplots()
+ax.set_title('Quantity purchased for each Products')
+ax.set_xlabel('Product Codes')
+ax.set_ylabel('Quantity')
+ax.bar('StockCode','Quantity',data = bar_data)
+st.pyplot(fig)
+
+bar_dict = pd.DataFrame(data = np.array(bar_data['Quantity']),
+                        index = np.array(bar_data['StockCode']))
+
+st.bar_chart(bar_dict) 
+st.area_chart(bar_dict)
+
+df_map = pd.read_csv('data/canadacities.csv')
+df_map = df_map[df_map['province_name'] == 'Nova Scotia'].loc[:,['lat','lon']]
 
 
+st.map(df_map)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# ****************************************************************************
 
 
 
